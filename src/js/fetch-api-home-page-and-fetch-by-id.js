@@ -195,7 +195,7 @@ function render(list, animate = true) {
     /** @type {HTMLImageElement|null} */
     const img = node.querySelector("[data-img]");
     if (img) {
-      img.src = b.image || "../assets/images/book-cover-placeholder-svg.png";
+      img.src = b.image || "/assets/images/book-cover-placeholder-svg.png";
       img.alt = b.title || "Book Cover";
       img.loading = "lazy";
       img.decoding = "async";
