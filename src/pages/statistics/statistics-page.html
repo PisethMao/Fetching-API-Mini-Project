@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Statistics Page</title>
+    <link rel="stylesheet" href="../../output.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link
+      rel="preload"
+      href="../../assets/fonts/Inter-ExtraBold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="shortcut icon"
+      href="../../assets/images/istad-logo.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body
+    class="relative min-h-screen text-white overflow-x-hidden scroll-smooth"
+  >
+    <header>
+      <section class="absolute inset-0 -z-50 overflow-hidden">
+        <section
+          class="absolute inset-0 bg-gradient-to-br from-[#120B2C] via-[#2A0E4A] to-[#4C0F7B]"
+        ></section>
+        <section
+          class="absolute -top-32 -right-44 h-96 w-96 rounded-full blur-3xl bg-fuchsia-500/40 animate-[glowPulse_4s_ease-in-out_infinite]"
+        ></section>
+        <section
+          class="absolute -bottom-40 -left-80 h-[512px] w-[512px] rounded-full blur-3xl bg-indigo-500/40 animate-[glowPulse_5s_ease-in-out_infinite]"
+        ></section>
+        <section
+          class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_60%,rgba(0,0,0,.45))]"
+        ></section>
+        <section
+          class="absolute top-40 left-1/2 h-[400px] w-[400px] rounded-full blur-3xl bg-pink-400/30 animate-[glowPulse_6s_ease-in-out_infinite_-2s]"
+        ></section>
+      </section>
+      <nav
+        class="fixed w-full z-10 bg-gradient-to-r from-[#120B2C] via-[#2A0E4A] to-[#4C0F7B] text-white opacity-0 animate-[navDrop_700ms_ease-out_100ms_forwards] motion-reduce:animate-none border-b border-b-white"
+      >
+        <section class="mx-auto max-w-7xl px-6">
+          <section class="flex items-center h-20 justify-between">
+            <a
+              href="../home/home-page.html"
+              class="flex items-center gap-2 text-[15px] font-semibold leading-none rounded-lg px-4 py-2 hover:text-violet-400 hover:scale-110 transition transform duration-200"
+            >
+              <i class="fa-solid fa-arrow-left text-[16px]"></i>
+              <span class="text-lg">Back</span>
+            </a>
+            <h1
+              class="font-bold text-xl tracking-tight leading-tight min-w-0 sm:text-2xl md:text-3xl"
+            >
+              Reading Statistics
+            </h1>
+            <a
+              href="../reading/reading-lists-page.html"
+              class="inline-flex items-center gap-2 text-[15px] font-semibold leading-none rounded-lg px-5 py-3 hover:bg-white/10 transition hover:text-black"
+              >Reading Lists</a
+            >
+          </section>
+        </section>
+      </nav>
+    </header>
+    <main>
+      <section
+        class="relative flex flex-col items-center justify-center text-center py-16 px-6 bg-gradient-to-b"
+      >
+        <h1
+          class="text-6xl sm:text-7xl font-bold tracking-tight text-white drop-shadow-lg mt-20 opacity-0 animate-[fadeUp_900ms_cubic-bezier(.22,1,.36,1)_350ms_forwards]"
+        >
+          Your Reading Journey
+        </h1>
+        <p
+          class="max-w-xl text-xl text-purple-200 leading-relaxed mt-5 opacity-0 animate-[fadeUp_900ms_cubic-bezier(.22,1,.36,1)_350ms_forwards]"
+        >
+          Track your progress and celebrate your achievements
+        </p>
+      </section>
+      <section class="mx-auto max-w-7xl px-4 md:px-8">
+        <section class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <section
+            class="flex items-baseline justify-between relative rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md shadow hover:translate-y-[-2px] transition-transform"
+          >
+            <section class="flex flex-col gap-3">
+              <section
+                class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-gradient-to-br from-sky-400 to-blue-500"
+              >
+                <i class="fa-solid fa-book-open text-xl"></i>
+              </section>
+              <section class="flex-1">
+                <h3 class="text-lg font-semibold">Total Books</h3>
+                <p class="text-sm mt-1 text-white/70">Books in your library</p>
+              </section>
+            </section>
+            <span
+              class="inline-flex items-center justify-center min-w-7 h-7 px-2 rounded-full text-[13px] font-bold bg-gradient-to-br from-sky-400 to-blue-500 ring-1 ring-white/15"
+              >0</span
+            >
+          </section>
+          <section
+            class="flex items-baseline justify-between relative rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md shadow hover:translate-y-[-2px] transition-transform"
+          >
+            <section class="flex flex-col gap-3">
+              <section
+                class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-green-500"
+              >
+                <i class="fa-solid fa-award text-xl"></i>
+              </section>
+              <section class="flex-1">
+                <h3 class="text-lg font-semibold">Books Read</h3>
+                <p class="text-sm mt-1 text-white/70">Completed this year</p>
+              </section>
+            </section>
+            <span
+              class="inline-flex items-center justify-center min-w-7 h-7 px-2 rounded-full text-[13px] font-bold bg-gradient-to-br from-emerald-400 to-green-500 ring-1 ring-white/15"
+              >0</span
+            >
+          </section>
+          <section
+            class="flex items-baseline justify-between relative rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md shadow hover:translate-y-[-2px] transition-transform"
+          >
+            <section class="flex flex-col gap-3">
+              <section
+                class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-gradient-to-br from-orange-400 to-rose-500"
+              >
+                <i class="fa-regular fa-clock text-xl"></i>
+              </section>
+              <section class="flex-1">
+                <h3 class="text-lg font-semibold">Currently Reading</h3>
+                <p class="text-sm mt-1 text-white/70">Books in progress</p>
+              </section>
+            </section>
+            <span
+              class="inline-flex items-center justify-center min-w-7 h-7 px-2 rounded-full text-[13px] font-bold bg-gradient-to-br from-orange-400 to-rose-500 ring-1 ring-white/15"
+              >0</span
+            >
+          </section>
+          <section
+            class="flex items-baseline justify-between relative rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md shadow hover:translate-y-[-2px] transition-transform"
+          >
+            <section class="flex flex-col gap-3">
+              <section
+                class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-gradient-to-br from-fuchsia-400 to-pink-500"
+              >
+                <i class="fa-solid fa-bullseye text-xl"></i>
+              </section>
+              <section class="flex-1">
+                <h3 class="text-lg font-semibold">Want to Read</h3>
+                <p class="text-sm mt-1 text-white/70">On your wishlist</p>
+              </section>
+            </section>
+            <span
+              class="inline-flex items-center justify-center min-w-7 h-7 px-2 rounded-full text-[13px] font-bold bg-gradient-to-br from-fuchsia-400 to-pink-500 ring-1 ring-white/15"
+              >0</span
+            >
+          </section>
+          <section
+            class="flex items-baseline justify-between relative rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md shadow hover:translate-y-[-2px] transition-transform"
+          >
+            <section class="flex flex-col gap-3">
+              <section
+                class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-gradient-to-br from-rose-400 to-pink-500"
+              >
+                <i class="fa-regular fa-heart text-xl"></i>
+              </section>
+              <section class="flex-1">
+                <h3 class="text-lg font-semibold">Favorites</h3>
+                <p class="text-sm mt-1 text-white/70">Love books</p>
+              </section>
+            </section>
+            <span
+              class="inline-flex items-center justify-center min-w-7 h-7 px-2 rounded-full text-[13px] font-bold bg-gradient-to-br from-rose-400 to-pink-500 ring-1 ring-white/15"
+              >0</span
+            >
+          </section>
+          <section
+            class="flex items-baseline justify-between relative rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md shadow hover:translate-y-[-2px] transition-transform"
+          >
+            <section class="flex flex-col gap-3">
+              <section
+                class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-400 to-violet-500"
+              >
+                <i class="fa-solid fa-arrow-trend-up text-xl"></i>
+              </section>
+              <section class="flex-1">
+                <h3 class="text-lg font-semibold">Reading Streak</h3>
+                <p class="text-sm mt-1 text-white/70">Keep it up!</p>
+              </section>
+            </section>
+            <span
+              class="inline-flex items-center justify-center min-w-7 h-7 px-2 rounded-full text-[13px] font-bold bg-gradient-to-br from-indigo-400 to-violet-500 ring-1 ring-white/15"
+              >16 days</span
+            >
+          </section>
+        </section>
+      </section>
+      <section class="mx-auto max-w-7xl px-4 md:px-8 mt-8">
+        <section class="grid gap-6 md:grid-cols-2">
+          <section
+            class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow hover:translate-y-[-2px] transition-transform"
+          >
+            <section class="flex items-baseline gap-3 mb-4">
+              <i class="fa-solid fa-bullseye text-xl text-violet-400"></i>
+              <h3 class="text-2xl font-semibold">Monthly Reading Goal</h3>
+            </section>
+            <section class="flex justify-between mb-2">
+              <p class="text-lg font-medium text-white/70 mb-2">Progress</p>
+              <p class="text-lg font-medium text-white">3 / 5 books</p>
+            </section>
+            <section
+              class="w-full h-3 bg-white rounded-full overflow-hidden mb-4"
+            >
+              <section
+                class="h-full bg-gradient-to-r from-pink-400 to-fuchsia-500"
+                style="width: 60%"
+              ></section>
+            </section>
+            <span class="text-white/70 font-medium"
+              >2 books remaining to reach your goal</span
+            >
+          </section>
+          <section
+            class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow hover:translate-y-[-2px] transition-transform"
+          >
+            <section class="flex items-baseline mb-3 gap-4">
+              <i
+                class="fa-regular fa-calendar-days text-xl text-violet-400"
+              ></i>
+              <h3 class="text-2xl font-semibold">Reading Insights</h3>
+            </section>
+            <section class="flex justify-between items-center mb-2">
+              <span class="text-lg font-medium text-white/70 mb-2"
+                >Average Rating</span
+              >
+              <span class="flex items-center gap-2 text-lg font-medium">
+                <span class="text-white">4.3</span>
+                <section class="flex">
+                  <i class="fa-solid fa-star text-yellow-300"></i>
+                  <i class="fa-solid fa-star text-yellow-300"></i>
+                  <i class="fa-solid fa-star text-yellow-300"></i>
+                  <i class="fa-solid fa-star text-yellow-300"></i>
+                  <i class="fa-solid fa-star text-yellow-300"></i>
+                </section>
+              </span>
+            </section>
+            <section class="flex items-baseline justify-between">
+              <span class="text-lg font-medium text-white/70 mb-2"
+                >Favorite Genre</span
+              >
+              <span
+                class="px-2 py-0.5 text-xs rounded-full bg-gradient-to-r from-pink-400 to-purple-500 font-semibold"
+                >Programming</span
+              >
+            </section>
+            <section class="flex justify-between items-center">
+              <span class="text-lg font-medium text-white/70 mb-2"
+                >Pages Read</span
+              >
+              <span class="font-semibold text-lg">0</span>
+            </section>
+          </section>
+        </section>
+      </section>
+      <section class="mx-auto max-w-7xl px-4 md:px-8 mt-8">
+        <section
+          class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow"
+        >
+          <section class="flex items-baseline gap-3 mb-6">
+            <i class="fa-solid fa-award text-xl text-violet-400"></i>
+            <h3 class="text-2xl font-semibold">Achievements</h3>
+          </section>
+          <section class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <section
+              class="rounded-xl bg-white/5 border border-white/10 p-5 flex flex-col items-center text-center"
+            >
+              <i class="fa-solid fa-lock text-2xl mb-3 text-yellow-300"></i>
+              <h4 class="font-semibold text-white/60">First Book</h4>
+              <p class="text-sm text-white/60">Read your first book</p>
+            </section>
+            <section
+              class="rounded-xl bg-white/5 border border-white/10 p-5 flex flex-col items-center text-center"
+            >
+              <i class="fa-solid fa-lock text-2xl mb-3 text-yellow-300"></i>
+              <h4 class="font-semibold text-white/60">Bookworm</h4>
+              <p class="text-sm text-white/60">Read 10 books</p>
+            </section>
+            <section
+              class="rounded-xl bg-white/5 border border-white/10 p-5 flex flex-col items-center text-center"
+            >
+              <i class="fa-solid fa-lock text-2xl mb-3 text-yellow-300"></i>
+              <h4 class="font-semibold text-white/60">Speed Reader</h4>
+              <p class="text-sm text-white/60">Read 5 books in a month</p>
+            </section>
+            <section
+              class="rounded-xl bg-white/5 border border-white/10 p-5 flex flex-col items-center text-center"
+            >
+              <i class="fa-solid fa-lock text-2xl mb-3 text-yellow-300"></i>
+              <h4 class="font-semibold text-white/60">Colletors</h4>
+              <p class="text-sm text-white/60">Add 20 books to favorites</p>
+            </section>
+            <section
+              class="rounded-xl bg-white/5 border border-white/10 p-5 flex flex-col items-center text-center"
+            >
+              <i class="fa-solid fa-lock text-2xl mb-3 text-yellow-300"></i>
+              <h4 class="font-semibold text-white/60">Streak Master</h4>
+              <p class="text-sm text-white/60">30-day reading streak</p>
+            </section>
+            <section
+              class="rounded-xl bg-white/5 border border-white/10 p-5 flex flex-col items-center text-center"
+            >
+              <i class="fa-solid fa-lock text-2xl mb-3 text-yellow-300"></i>
+              <h4 class="font-semibold text-white/60">Genre Explorer</h4>
+              <p class="text-sm text-white/60">Read from 5 differents genres</p>
+            </section>
+            <section
+              class="rounded-xl bg-white/5 border border-white/10 p-5 flex flex-col items-center text-center"
+            >
+              <i class="fa-solid fa-lock text-2xl mb-3 text-yellow-300"></i>
+              <h4 class="font-semibold text-white/60">Page Turner</h4>
+              <p class="text-sm text-white/60">Read 10,000 pages</p>
+            </section>
+            <section
+              class="rounded-xl bg-gradient-to-r from-orange-400 to-amber-500 p-5 flex flex-col items-center text-center text-white shadow-lg"
+            >
+              <i class="fa-solid fa-trophy text-2xl mb-3 text-yellow-300"></i>
+              <h4 class="font-semibold">Dedicated Reader</h4>
+              <p class="text-sm">Read every day for a week</p>
+            </section>
+          </section>
+        </section>
+      </section>
+      <section
+        class="relative py-20 sm:py-16 mt-16 border-t border-b border-t-white"
+      >
+        <section class="px-6 2xl:px-24 mx-auto max-w-6xl">
+          <h2
+            class="text-center text-3xl sm:text-4xl font-bold tracking-tight opacity-0 animate-[fadeUp_900ms_cubic-bezier(.22,1,.36,1)_1000ms_forwards]"
+          >
+            Stay Updated with BookVerse
+          </h2>
+          <p
+            class="mt-4 text-center text-purple-100/80 max-w-2xl mx-auto text-lg sm:text-xl font-medium opacity-0 animate-[fadeUp_900ms_cubic-bezier(.22,1,.36,1)_1000ms_forwards]"
+          >
+            Get the latest book recommendations, reading tips, and exclusive
+            content delivered to your inbox.
+          </p>
+          <form
+            class="mt-8 mx-auto max-w-xl opacity-0 animate-[fadeUp_900ms_cubic-bezier(.22,1,.36,1)_1000ms_forwards]"
+            onsubmit="event.preventDefault()"
+          >
+            <section
+              class="rounded-2xl border-1 right-1 ring-white/20 bg-white/5 p-4 flex flex-col items-center gap-4"
+            >
+              <section class="flex w-full gap-2">
+                <input
+                  placeholder="Enter your email"
+                  required
+                  class="flex-1 h-12 rounded-lg bg-transparent px-4 border border-white/20 placeholder-purple-200/60 focus:border-fuchsia-400 focus:ring-1 focus:ring-fuchsia-400/60 outline-none"
+                /><button
+                  type="submit"
+                  class="h-12 sm:px-6 w-24 sm:w-auto rounded-lg font-medium shadow-md bg-gradient-to-r from-fuchsia-500 to-indigo-500 hover:from-fuchsia-400 hover:to-indigo-400 active:scale-[.98] transition cursor-pointer"
+                >
+                  Subscribe
+                </button>
+              </section>
+              <p class="text-xs text-purple-100/70 text-center">
+                No spam, unsubscribe at any time.
+              </p>
+            </section>
+          </form>
+        </section>
+        <span
+          class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_60%,rgba(0,0,0,.35))]"
+        ></span>
+      </section>
+    </main>
+    <footer>
+      <address
+        class="bg-gradient-to-b from-transparent to-[#1b0f28]/80 pt-16 pb-10 opacity-0 animate-[fadeUp_900ms_cubic-bezier(.22,1,.36,1)_1000ms_forwards]"
+      >
+        <section class="px-6 2xl:px-48 mx-auto">
+          <section class="grid gap-10 md:grid-cols-6">
+            <address class="not-italic grid-cols-2 min-w-md">
+              <section class="flex items-center gap-3 mb-5">
+                <section
+                  class="w-9 h-9 p-7 flex items-center justify-center rounded-xl bg-gradient-to-tr from-fuchsia-500 to-violet-500 ring-1 ring-white/10"
+                >
+                  <i class="fa-solid fa-book-open text-2xl"></i>
+                </section>
+                <h3 class="text-3xl font-bold">BookVerse</h3>
+              </section>
+              <p
+                class="text-purple-100/80 font-medium leading-relaxed text-[13px] sm:text-sm md:text-base lg:text-lg whitespace-normal break-words w-full max-w-[44ch] sm:max-w-none"
+              >
+                Your ultimate destination for discovering, tracking, and
+                enjoying books. Join thousands of readers in building their
+                perfect digital library.
+              </p>
+              <ul class="mt-6 space-y-3 text-purple-100/80">
+                <li class="flex items-center gap-3">
+                  <i
+                    class="fa-solid fa-location-dot opacity-80 text-violet-500"
+                  ></i
+                  ><span class="font-medium">San Francisco, CA</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <i class="fa-solid fa-phone opacity-80 text-violet-500"></i
+                  ><span class="font-medium">+1 (555) 123-4567</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <i
+                    class="fa-regular fa-envelope opacity-80 text-violet-500"
+                  ></i
+                  ><a
+                    href="mailto:pisethmao2002@gmail.com"
+                    class="font-medium hover:underline"
+                    >hello@bookverse.com</a
+                  >
+                </li>
+              </ul>
+              <section class="flex items-center gap-5 mt-5">
+                <a
+                  href="https://x.com/PisethMao528763"
+                  target="_blank"
+                  class="w-9 h-9 grid place-items-center rounded-lg bg-white/10 ring-1 ring-white/10 hover:bg-white/20 transition-transform duration-300 hover:scale-125"
+                >
+                  <i class="fa-brands fa-twitter hover:text-blue-400"></i>
+                </a>
+                <a
+                  href="https://github.com/PisethMao"
+                  target="_blank"
+                  class="w-9 h-9 grid place-items-center rounded-lg bg-white/10 ring-1 ring-white/10 hover:bg-white/20 transition-transform duration-300 hover:scale-125"
+                >
+                  <i class="fa-brands fa-github hover:text-black"></i>
+                </a>
+                <a
+                  href="mailto:pisethmao2002@gmail.com"
+                  target="_blank"
+                  class="w-9 h-9 grid place-items-center rounded-lg bg-white/10 ring-1 ring-white/10 hover:bg-white/20 transition-transform duration-300 hover:scale-125"
+                >
+                  <i class="fa-regular fa-envelope hover:text-violet-400"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-9 h-9 grid place-items-center rounded-lg bg-white/10 ring-1 ring-white/10 hover:bg-white/20 transition-transform duration-300 hover:scale-125"
+                >
+                  <i class="fa-solid fa-globe hover:text-green-400"></i>
+                </a>
+              </section>
+            </address>
+            <address></address>
+            <section class="not-italic">
+              <h4 class="font-semibold mb-4 text-xl">Explore</h4>
+              <ul class="space-y-4 text-purple-100/80">
+                <li>
+                  <a href="../home/home-page.html" class="hover:text-violet-400">New Releases</a>
+                </li>
+                <li>
+                  <a href="../categories/categories.html" class="hover:text-violet-400"
+                    >Categories</a
+                  >
+                </li>
+                <li>
+                  <a href="../home/home-page.html" class="hover:text-violet-400">Popular Books</a>
+                </li>
+                <li>
+                  <a href="../home/home-page.html" class="hover:text-violet-400">Top Rated</a>
+                </li>
+              </ul>
+            </section>
+            <section class="not-italic">
+              <h4 class="font-semibold mb-4 text-xl">Feature</h4>
+              <ul class="space-y-4 text-purple-100/80">
+                <li>
+                  <a
+                    href="../reading/reading-lists-page.html"
+                    class="hover:text-violet-400"
+                    >Reading Lists</a
+                  >
+                </li>
+                <li>
+                  <a href="../favorite/favorites-page.html" class="hover:text-violet-400"
+                    >Favorites</a
+                  >
+                </li>
+                <li>
+                  <a href="../statistics/statistics-page.html" class="hover:text-violet-400"
+                    >Statistics</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="hover:text-violet-400">Book Reviews</a>
+                </li>
+              </ul>
+            </section>
+            <section class="not-italic">
+              <h4 class="font-semibold mb-4 text-xl">Support</h4>
+              <ul class="space-y-4 text-purple-100/80">
+                <li>
+                  <a href="#" class="hover:text-violet-400">Help Center</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:text-violet-400">Contact Us</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:text-violet-400">FAQ</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:text-violet-400">Community</a>
+                </li>
+              </ul>
+            </section>
+            <section class="not-italic">
+              <h4 class="font-semibold mb-4 text-xl">Legal</h4>
+              <ul class="space-y-4 text-purple-100/80">
+                <li>
+                  <a href="#" class="hover:text-violet-400">Privacy Policy</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:text-violet-400">Term of Service</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:text-violet-400">Cookie Policy</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:text-violet-400">DMCA</a>
+                </li>
+              </ul>
+            </section>
+          </section>
+        </section>
+      </address>
+      <address>
+        <section
+          class="bg-gradient-to-r from-purple-700 via-purple-800 to-indigo-900 py-16 border-t border-b border-t-white"
+        >
+          <section
+            class="not-italic mx-auto px-6 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center opacity-0 animate-[fadeUp_900ms_cubic-bezier(.22,1,.36,1)_1000ms_forwards]"
+          >
+            <section>
+              <h3 class="text-3xl sm:text-4xl font-bold text-white">50,000+</h3>
+              <p class="mt-2 text-purple-200 text-sm font-medium">
+                Books Available
+              </p>
+            </section>
+            <section>
+              <h3 class="text-3xl sm:text-4xl font-bold text-white">25,000+</h3>
+              <p class="mt-2 text-purple-200 text-sm font-medium">
+                Active Readers
+              </p>
+            </section>
+            <section>
+              <h3 class="text-3xl sm:text-4xl font-bold text-white">
+                100,000+
+              </h3>
+              <p class="mt-2 text-purple-200 text-sm font-medium">
+                Reading Lists
+              </p>
+            </section>
+            <section>
+              <h3 class="text-3xl sm:text-4xl font-bold text-white">
+                500,000+
+              </h3>
+              <p class="mt-2 text-purple-200 text-sm font-medium">
+                Reviews Written
+              </p>
+            </section>
+          </section>
+        </section>
+      </address>
+      <address>
+        <section class="not-italic border-t border-white/10 py-4">
+          <section
+            class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between text-sm text-purple-200/80"
+          >
+            <section class="flex items-center gap-6">
+              <p>© 2025 <span>BookVerse</span>. Made with</p>
+              <p class="flex items-center gap-2">
+                <span class="text-red-400"
+                  ><i class="fa-solid fa-heart text-red-600"></i
+                ></span>
+                for book lovers everywhere.
+              </p>
+            </section>
+            <section class="flex items-center gap-6">
+              <p>
+                Powered by
+                <span>IT Book Store API</span>
+              </p>
+              <p class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-green-400"></span> All
+                systems operational
+              </p>
+            </section>
+          </section>
+        </section>
+      </address>
+    </footer>
+    <script src="../../../node_modules/preline/dist/preline.js"></script>
+    <script type="module" src="../../js/script.js" defer></script>
+  </body>
+</html>

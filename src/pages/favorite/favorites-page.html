@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favorites Page</title>
+    <link rel="stylesheet" href="../../output.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link
+      rel="preload"
+      href="../../assets/fonts/Inter-ExtraBold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="shortcut icon"
+      href="../../assets/images/istad-logo.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body
+    data-favorites-page
+    class="relative min-h-screen text-white overflow-x-hidden scroll-smooth"
+  >
+    <header>
+      <section class="absolute inset-0 -z-50 overflow-hidden">
+        <section
+          class="absolute inset-0 bg-gradient-to-br from-[#120B2C] via-[#2A0E4A] to-[#4C0F7B]"
+        ></section>
+        <section
+          class="absolute -top-32 -right-44 h-96 w-96 rounded-full blur-3xl bg-fuchsia-500/40 animate-[glowPulse_4s_ease-in-out_infinite]"
+        ></section>
+        <section
+          class="absolute -bottom-40 -left-80 h-[512px] w-[512px] rounded-full blur-3xl bg-indigo-500/40 animate-[glowPulse_5s_ease-in-out_infinite]"
+        ></section>
+        <section
+          class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_60%,rgba(0,0,0,.45))]"
+        ></section>
+        <section
+          class="absolute top-40 left-1/2 h-[400px] w-[400px] rounded-full blur-3xl bg-pink-400/30 animate-[glowPulse_6s_ease-in-out_infinite_-2s]"
+        ></section>
+      </section>
+      <nav
+        class="fixed w-full z-10 bg-gradient-to-r from-[#120B2C] via-[#2A0E4A] to-[#4C0F7B] text-white opacity-0 animate-[navDrop_700ms_ease-out_100ms_forwards] motion-reduce:animate-none border-b border-b-white"
+      >
+        <section class="mx-auto max-w-7xl px-6">
+          <section class="flex items-center h-20 justify-between">
+            <!-- javascript:history.back() -->
+            <!-- why i don't use href? -->
+            <!-- answer so short: in this page home and category can go to -->
+            <!-- so i use href i back for the same page -->
+            <!-- if i use javascript:history.back() this it store the last page  -->
+            <!-- that i want back last firs home baack home -->
+            <!-- last first category back categories -->
+            <a
+              href="javascript:history.back()"
+              class="flex items-center gap-2 text-[15px] font-semibold leading-none rounded-lg px-4 py-2 hover:text-violet-400 hover:scale-110 transition transform duration-200"
+            >
+              <i class="fa-solid fa-arrow-left text-[16px]"></i>
+              <span class="text-lg">Back</span>
+            </a>
+            <h1
+              class="flex items-center gap-2 font-bold text-2xl tracking-tight"
+            >
+              <i class="fa-solid fa-heart text-red-500"></i>
+              My Favorites (<span data-fav-count>0</span>)
+            </h1>
+          </section>
+        </section>
+      </nav>
+    </header>
+    <main>
+      <section
+        id="emptyMessage"
+        class="flex flex-col items-center justify-center text-center py-48 px-6 bg-gradient-to-b"
+      >
+        <i
+          class="fa-solid fa-heart-crack text-8xl text-red-500 mb-6 opacity-0 animate-[fadeUp_900ms_cubic-bezier(.22,1,.36,1)_200ms_forwards]"
+        ></i>
+        <h2
+          class="text-3xl sm:text-4xl font-bold tracking-tight text-white drop-shadow-lg opacity-0 animate-[fadeUp_900ms_cubic-bezier(.22,1,.36,1)_400ms_forwards]"
+        >
+          No favorites yet
+        </h2>
+        <p
+          class="max-w-lg mx-auto text-xl text-purple-200 leading-relaxed mt-4 opacity-0 animate-[fadeUp_900ms_cubic-bezier(.22,1,.36,1)_600ms_forwards]"
+        >
+          Start exploring books and add them to your favorites to see them here!
+        </p>
+        <a
+          href="../home/home-page.html"
+          class="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-pink-500 to-violet-500 hover:from-violet-600 hover:to-fuchsia-600 hover:scale-110 transition transform duration-200 text-lg opacity-0 animate-[fadeUp_900ms_cubic-bezier(.22,1,.36,1)_600ms_forwards]"
+        >
+          Discover Books
+        </a>
+      </section>
+      <section
+        id="bookGrid"
+        class="py-48 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-6 2xl:px-24 gap-8 place-items-center sm:place-items-stretch opacity-0 animate-[slideUpGroup_900ms_cubic-bezier(.22,1,.36,1)_1200ms_forwards]"
+      ></section>
+      <template id="bookCardTemplate">
+        <article
+          data-id=""
+          class="rounded-2xl bg-white/5 ring-1 ring-white/10 hover:bg-white/10 transition-transform sm:w-96 duration-300 group hover:scale-105 flex flex-col h-full"
+        >
+          <section
+            class="relative h-[320px] overflow-hidden pl-16 pr-16 flex items-center justify-center"
+          >
+            <img
+              data-img
+              class="w-full h-full object-cover"
+              src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1669830596i/63895627.jpg"
+              alt="Book Title"
+            />
+            <section
+              class="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100"
+            ></section>
+            <button
+              type="button"
+              aria-pressed="false"
+              title="Add to favorites"
+              class="fav-btn absolute top-3 right-3 w-9 h-9 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-full cursor-pointer"
+            >
+              <i class="fa-solid fa-heart text-[16px]"></i>
+            </button>
+          </section>
+          <section class="mt-0.5 p-5 text-left flex flex-col flex-1">
+            <h3
+              data-title
+              class="font-semibold text-2xl leading-tight mb-3 line-clamp-2 h-[60px]"
+            >
+              Mathematics for Game Programming and Computer Graphics
+            </h3>
+            <p
+              data-subtitle
+              class="text-md text-purple-200/80 line-clamp-2 min-h-[48px]"
+            >
+              Explore the essential mathematics for creating, rendering, and
+              manipulating 3D virtual environments
+            </p>
+            <section class="mt-4 flex items-center justify-between">
+              <span
+                data-price
+                class="inline-flex items-center justify-center px-3 py-1 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-purple-500 to-pink-500"
+              >
+                $49.99
+              </span>
+              <button
+                data-link
+                type="button"
+                class="px-3 py-2 rounded-lg font-semibold bg-white/10 hover:bg-white/15 text-sm cursor-pointer"
+              >
+                View Details
+              </button>
+            </section>
+          </section>
+        </article>
+      </template>
+      <section
+        id="detailModal"
+        class="fixed inset-0 z-[60] hidden items-center justify-center"
+      >
+        <section
+          id="detailBackdrop"
+          class="absolute inset-0 bg-black/70"
+        ></section>
+        <section
+          class="relative mx-4 w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl bg-[#2a1739]/20 backdrop-blur-xl p-6 md:p-6 ring-1 ring-white/10 shadow-2xl"
+        >
+          <button
+            type="button"
+            id="detailClose"
+            class="absolute right-5 top-5 w-9 h-9 flex items-center justify-center rounded-full"
+          >
+            <i
+              class="fa-solid fa-xmark text-white hover:text-red-500 cursor-pointer"
+            ></i>
+          </button>
+          <section class="flex flex-col md:flex-row gap-8 md:gap-10">
+            <img
+              id="detailCover"
+              src=""
+              alt="Book Cover"
+              loading="lazy"
+              draggable="false"
+            />
+            <section class="text-purple-100">
+              <h2 id="detailTitle" class="text-2xl font-bold pb-2"></h2>
+              <h3 id="detailSubtitle" class="text-lg opacity-80 pb-4"></h3>
+              <p>
+                <span class="font-bold">Authors:</span>
+                <span id="detailAuthor" class="font-medium"></span>
+              </p>
+              <p>
+                <span class="font-bold">Publisher:</span>
+                <span id="detailPublisher" class="font-medium"></span>
+              </p>
+              <p>
+                <span class="font-bold">Year:</span>
+                <span id="detailYear" class="font-medium"></span>
+              </p>
+              <p>
+                <span class="font-bold">Pages:</span>
+                <span id="detailPages" class="font-medium"></span>
+              </p>
+              <p
+                id="detailDesc"
+                class="mt-3 text-lg leading-relaxed opacity-90"
+              ></p>
+              <section class="mt-6">
+                <a
+                  id="detailBuy"
+                  href="#"
+                  target="_blank"
+                  class="inline-block px-6 py-3 hover:bg-pink-700 rounded-xl text-white bg-gradient-to-r from-purple-500 to-pink-500 font-semibold transition"
+                >
+                  Buy
+                </a>
+              </section>
+            </section>
+          </section>
+        </section>
+      </section>
+      <section
+        class="relative py-20 sm:py-16 mt-16 border-t border-b border-t-white"
+      >
+        <section class="px-6 2xl:24 mx-auto max-w-6xl">
+          <h2
+            class="text-center text-3xl sm:text-4xl font-bold tracking-tight opacity-0 animate-[fadeUp_900ms_cubic-bezier(.22,1,.36,1)_1000ms_forwards]"
+          >
+            Stay Updated with BookVerse
+          </h2>
+          <p
+            class="mt-4 text-center text-purple-100/80 max-w-2xl mx-auto text-lg sm:text-xl font-medium opacity-0 animate-[fadeUp_900ms_cubic-bezier(.22,1,.36,1)_1000ms_forwards]"
+          >
+            Get the latest book recommendations, reading tips, and exclusive
+            content delivered to your inbox.
+          </p>
+          <form
+            class="mt-8 mx-auto max-w-xl opacity-0 animate-[fadeUp_900ms_cubic-bezier(.22,1,.36,1)_1000ms_forwards]"
+            onsubmit="event.preventDefault()"
+          >
+            <section
+              class="rounded-2xl border ring-1 ring-white/20 bg-white/5 p-4 flex flex-col items-center gap-4"
+            >
+              <section class="flex w-full gap-2">
+                <input
+                  placeholder="Enter your email"
+                  required
+                  class="flex-1 h-12 rounded-lg bg-transparent px-4 border border-white/20 placeholder-purple-200/60 focus:border-fuchsia-400 focus:ring-1 focus:ring-fuchsia-400/60 outline-none"
+                /><button
+                  type="submit"
+                  class="h-12 sm:px-6 w-24 sm:w-auto rounded-lg font-medium shadow-md bg-gradient-to-r from-fuchsia-500 to-indigo-500 hover:from-fuchsia-400 hover:to-indigo-400 active:scale-[.98] transition cursor-pointer"
+                >
+                  Subscribe
+                </button>
+              </section>
+              <p class="text-xs text-purple-100/70 text-center">
+                No spam, unsubscribe at any time.
+              </p>
+            </section>
+          </form>
+        </section>
+        <span
+          class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_60%,rgba(0,0,0,.35))]"
+        ></span>
+      </section>
+    </main>
+    <footer>
+      <address
+        class="bg-gradient-to-b from-transparent to-[#1b0f28]/80 pt-16 pb-10 opacity-0 animate-[fadeUp_900ms_cubic-bezier(.22,1,.36,1)_1000ms_forwards]"
+      >
+        <section class="px-6 2xl:px-48 mx-auto">
+          <section class="grid gap-10 md:grid-cols-6">
+            <address class="not-italic grid-cols-2 min-w-md">
+              <section class="flex items-center gap-3 mb-5">
+                <section
+                  class="w-9 h-9 p-7 flex items-center justify-center rounded-xl bg-gradient-to-tr from-fuchsia-500 to-violet-500 ring-1 ring-white/10"
+                >
+                  <i class="fa-solid fa-book-open text-2xl"></i>
+                </section>
+                <h3 class="text-3xl font-bold">BookVerse</h3>
+              </section>
+              <p
+                class="text-purple-100/80 font-medium leading-relaxed text-[13px] sm:text-sm md:text-base lg:text-lg whitespace-normal break-words w-full max-w-[44ch] sm:max-w-none"
+              >
+                Your ultimate destination for discovering, tracking, and
+                enjoying books. Join thousands of readers in building their
+                perfect digital library.
+              </p>
+              <ul class="mt-6 space-y-3 text-purple-100/80">
+                <li class="flex items-center gap-3">
+                  <i
+                    class="fa-solid fa-location-dot opacity-80 text-violet-500"
+                  ></i
+                  ><span class="font-medium">San Francisco, CA</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <i class="fa-solid fa-phone opacity-80 text-violet-500"></i
+                  ><span class="font-medium">+1 (555) 123-4567</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <i
+                    class="fa-regular fa-envelope opacity-80 text-violet-500"
+                  ></i
+                  ><a
+                    href="mailto:pisethmao2002@gmail.com"
+                    class="font-medium hover:underline"
+                    >hello@bookverse.com</a
+                  >
+                </li>
+              </ul>
+              <section class="flex items-center gap-5 mt-5">
+                <a
+                  href="https://x.com/PisethMao528763"
+                  target="_blank"
+                  class="w-9 h-9 grid place-items-center rounded-lg bg-white/10 ring-1 ring-white/10 hover:bg-white/20 transition-transform duration-300 hover:scale-125"
+                >
+                  <i class="fa-brands fa-twitter hover:text-blue-400"></i>
+                </a>
+                <a
+                  href="https://github.com/PisethMao"
+                  target="_blank"
+                  class="w-9 h-9 grid place-items-center rounded-lg bg-white/10 ring-1 ring-white/10 hover:bg-white/20 transition-transform duration-300 hover:scale-125"
+                >
+                  <i class="fa-brands fa-github hover:text-black"></i>
+                </a>
+                <a
+                  href="mailto:pisethmao2002@gmail.com"
+                  target="_blank"
+                  class="w-9 h-9 grid place-items-center rounded-lg bg-white/10 ring-1 ring-white/10 hover:bg-white/20 transition-transform duration-300 hover:scale-125"
+                >
+                  <i class="fa-regular fa-envelope hover:text-violet-400"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-9 h-9 grid place-items-center rounded-lg bg-white/10 ring-1 ring-white/10 hover:bg-white/20 transition-transform duration-300 hover:scale-125"
+                >
+                  <i class="fa-solid fa-globe hover:text-green-400"></i>
+                </a>
+              </section>
+            </address>
+            <address></address>
+            <section class="not-italic">
+              <h4 class="font-semibold mb-4 text-xl">Explore</h4>
+              <ul class="space-y-4 text-purple-100/80">
+                <li>
+                  <a href="../home/home-page.html" class="hover:text-violet-400">New Releases</a>
+                </li>
+                <li>
+                  <a
+                    href="../categories/categories.html"
+                    class="hover:text-violet-400"
+                    >Categories</a
+                  >
+                </li>
+                <li>
+                  <a href="../home/home-page.html" class="hover:text-violet-400">Popular Books</a>
+                </li>
+                <li>
+                  <a href="../home/home-page.html" class="hover:text-violet-400">Top Rated</a>
+                </li>
+              </ul>
+            </section>
+            <section class="not-italic">
+              <h4 class="font-semibold mb-4 text-xl">Features</h4>
+              <ul class="space-y-4 text-purple-100/80">
+                <li>
+                  <a
+                    href="../reading/reading-lists-page.html"
+                    class="hover:text-violet-400"
+                    >Reading Lists</a
+                  >
+                </li>
+                <li>
+                  <a href="favorites-page.html" class="hover:text-violet-400"
+                    >Favorites</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="../statistics/statistics-page.html"
+                    class="hover:text-violet-400"
+                    >Statistics</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="hover:text-violet-400">Book Reviews</a>
+                </li>
+              </ul>
+            </section>
+            <section class="not-italic">
+              <h4 class="font-semibold mb-4 text-xl">Support</h4>
+              <ul class="space-y-4 text-purple-100/80">
+                <li>
+                  <a href="#" class="hover:text-violet-400">Help Center</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:text-violet-400">Contact Us</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:text-violet-400">FAQ</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:text-violet-400">Community</a>
+                </li>
+              </ul>
+            </section>
+            <section class="not-italic">
+              <h4 class="font-semibold mb-4 text-xl">Legal</h4>
+              <ul class="space-y-4 text-purple-100/80">
+                <li>
+                  <a href="#" class="hover:text-violet-400">Privacy Policy</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:text-violet-400">Term of Service</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:text-violet-400">Cookie Policy</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:text-violet-400">DMCA</a>
+                </li>
+              </ul>
+            </section>
+          </section>
+        </section>
+      </address>
+      <address>
+        <section
+          class="bg-gradient-to-r from-purple-700 via-purple-800 to-indigo-900 py-16 border-t border-b border-t-white"
+        >
+          <section
+            class="not-italic mx-auto px-6 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center opacity-0 animate-[fadeUp_900ms_cubic-bezier(.22,1,.36,1)_1000ms_forwards]"
+          >
+            <section>
+              <h3 class="text-3xl sm:text-4xl font-bold text-white">50,000+</h3>
+              <p class="mt-2 text-purple-200 text-sm font-medium">
+                Books Available
+              </p>
+            </section>
+            <section>
+              <h3 class="text-3xl sm:text-4xl font-bold text-white">25,000+</h3>
+              <p class="mt-2 text-purple-200 text-sm font-medium">
+                Active Readers
+              </p>
+            </section>
+            <section>
+              <h3 class="text-3xl sm:text-4xl font-bold text-white">
+                100,000+
+              </h3>
+              <p class="mt-2 text-purple-200 text-sm font-medium">
+                Reading Lists
+              </p>
+            </section>
+            <section>
+              <h3 class="text-3xl sm:text-4xl font-bold text-white">
+                500,000+
+              </h3>
+              <p class="mt-2 text-purple-200 text-sm font-medium">
+                Reviews Written
+              </p>
+            </section>
+          </section>
+        </section>
+      </address>
+      <address>
+        <section class="not-italic border-t border-white/10 py-4">
+          <section
+            class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between text-sm text-purple-200/80"
+          >
+            <section class="flex items-center gap-6">
+              <p>© 2025 <span>BookVerse</span>. Made with</p>
+              <p class="flex items-center gap-2">
+                <span class="text-red-400"
+                  ><i class="fa-solid fa-heart text-red-600"></i
+                ></span>
+                for book lovers everywhere.
+              </p>
+            </section>
+            <section class="flex items-center gap-6">
+              <p>
+                Powered by
+                <span>IT Book Store API</span>
+              </p>
+              <p class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-green-400"></span> All
+                systems operational
+              </p>
+            </section>
+          </section>
+        </section>
+      </address>
+    </footer>
+    <script src="../../../node_modules/preline/dist/preline.js"></script>
+    <script type="module" src="../../js/script.js" defer></script>
+    <script src="../../js/dynamic-favorites.js" defer></script>
+  </body>
+</html>
