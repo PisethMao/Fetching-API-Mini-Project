@@ -228,7 +228,7 @@ function renderBooks(books = []) {
     }
     const btnDetails = node.querySelector("[data-link]");
     if (btnDetails) {
-      const href = `../pages/categories/categories-detail-page.html?isbn=${encodeURIComponent(
+      const href = `../categories/categories-detail-page.html?isbn=${encodeURIComponent(
         b.isbn13
       )}`;
       if (btnDetails.tagName === "A") {
