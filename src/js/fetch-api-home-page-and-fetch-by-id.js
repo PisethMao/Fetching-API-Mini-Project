@@ -195,7 +195,7 @@ function render(list, animate = true) {
     /** @type {HTMLImageElement|null} */
     const img = node.querySelector("[data-img]");
     if (img) {
-      img.src = b.image || "/assets/images/book-cover-placeholder-svg.png";
+      img.src = b.image || "../assets/images/book-cover-placeholder-svg.png";
       img.alt = b.title || "Book Cover";
       img.loading = "lazy";
       img.decoding = "async";
@@ -216,7 +216,7 @@ function render(list, animate = true) {
     /** @type {HTMLAnchorElement|null} */
     const btnDetail = node.querySelector("[data-link]");
     if (btnDetail) {
-      const detailUrl = `categories-detail-page.html?isbn=${encodeURIComponent(
+      const detailUrl = `../pages/categories/categories-detail-page.html?isbn=${encodeURIComponent(
         b.isbn13
       )}`;
       btnDetail.textContent = "View Details";

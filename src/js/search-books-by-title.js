@@ -15,7 +15,7 @@
  * @property {Book[]} books
  */
 const API = "https://api.itbook.store/1.0";
-const DETAIL_PAGE = "/pages/categories/categories-detail-page.html";
+const DETAIL_PAGE = "../pages/categories/categories-detail-page.html";
 const grid = document.getElementById("bookGrid");
 /** @type {HTMLTemplateElement|null} */
 const tpl = document.getElementById("bookCardTemplate");
